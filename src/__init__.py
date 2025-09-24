@@ -16,7 +16,7 @@ from lxml import etree
 
 DOUBAN_BOOK_BASE = "https://book.douban.com/"
 DOUBAN_SEARCH_JSON_URL = "https://www.douban.com/j/search"
-DOUBAN_SEARCH_URL = "https://search.douban.com/book/subject_search?search_text="
+DOUBAN_SEARCH_URL = "https://search.douban.com/book/subject_search"
 DOUBAN_BOOK_URL = 'https://book.douban.com/subject/%s/'
 DOUBAN_BOOK_CAT = "1001"
 DOUBAN_CONCURRENCY_SIZE = 5  # 并发查询数
@@ -44,9 +44,10 @@ class DoubanBookSearcher:
             return url
 
     def load_book_urls_new(self, query, log):
-        params = {"cat": DOUBAN_BOOK_CAT, "q": query}
+        params = {"search_text": query, "cat": DOUBAN_BOOK_CAT }
         url = DOUBAN_SEARCH_URL + "?" + urlencode(params)
         log.info(f'Load books by keywords: {query}')
+        log.info(f'Search Url: {url}')
         res = urlopen(Request(url, headers=self.get_headers(), method='GET'))
         book_urls = []
         if res.status in [200, 201]:
