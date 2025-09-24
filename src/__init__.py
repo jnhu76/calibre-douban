@@ -16,7 +16,7 @@ from lxml import etree
 
 DOUBAN_BOOK_BASE = "https://book.douban.com/"
 DOUBAN_SEARCH_JSON_URL = "https://www.douban.com/j/search"
-DOUBAN_SEARCH_URL = "https://www.douban.com/search"
+DOUBAN_SEARCH_URL = "https://search.douban.com/book/subject_search?search_text="
 DOUBAN_BOOK_URL = 'https://book.douban.com/subject/%s/'
 DOUBAN_BOOK_CAT = "1001"
 DOUBAN_CONCURRENCY_SIZE = 5  # 并发查询数
